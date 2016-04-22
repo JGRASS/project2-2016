@@ -24,7 +24,7 @@ public class ConfirmWindow extends JFrame {
 		getContentPane().add(getPanel_1(), BorderLayout.CENTER);
 	}
 
-	private JPanel getPanel() {
+	public JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.add(getBtnOkay());
@@ -32,19 +32,19 @@ public class ConfirmWindow extends JFrame {
 		}
 		return panel;
 	}
-	private JButton getBtnOkay() {
+	public JButton getBtnOkay() {
 		if (btnOkay == null) {
 			btnOkay = new JButton("Okay");
 		}
 		return btnOkay;
 	}
-	private JButton getBtnAgain() {
+	public JButton getBtnAgain() {
 		if (btnAgain == null) {
 			btnAgain = new JButton("Again");
 		}
 		return btnAgain;
 	}
-	private JPanel getPanel_1() {
+	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
 			panel_1.setLayout(null);
@@ -52,7 +52,7 @@ public class ConfirmWindow extends JFrame {
 		}
 		return panel_1;
 	}
-	private JLabel getLblPicture() {
+	public JLabel getLblPicture() {
 		if (lblPicture == null) {
 			lblPicture = new JLabel("");
 			lblPicture.setIcon(new ImageIcon(ConfirmWindow.class.getResource("/imgs/webcam.jpg")));

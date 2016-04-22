@@ -28,7 +28,7 @@ public class CaptureController {
 	private Dimension size = new WebcamController().getSize();
 	private List<WebcamPanel> panels = new WebcamController().getPanels();
 
-	CaptureWindow captureWindow = new CaptureWindow(webcams, panels);
+	CaptureWindow captureWindow = new CaptureWindow();
 
 	SnapMeAction snapMeAction = new SnapMeAction(webcams);
 	StartAction startAction = new StartAction(captureWindow, panels, executor);
