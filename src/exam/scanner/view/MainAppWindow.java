@@ -1,4 +1,4 @@
-package view;
+package exam.scanner.view;
 
 import java.awt.EventQueue;
 

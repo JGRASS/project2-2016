@@ -1,4 +1,4 @@
-package view;
+package exam.scanner.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
