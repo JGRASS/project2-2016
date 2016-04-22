@@ -132,7 +132,7 @@ public class MainAppWindow {
 	private JLabel getImgLbl() {
 		if (imgLbl == null) {
 			imgLbl = new JLabel("");
-			imgLbl.setIcon(new ImageIcon(MainAppWindow.class.getResource("/img/fon-logo.jpg")));
+			imgLbl.setIcon(new ImageIcon(MainAppWindow.class.getResource("/imgs/fon-logo.jpg")));
 		}
 		return imgLbl;
 	}

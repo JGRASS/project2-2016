@@ -54,7 +54,7 @@ public class ConfirmWindow extends JFrame {
 	private JLabel getLblPicture() {
 		if (lblPicture == null) {
 			lblPicture = new JLabel("");
-			lblPicture.setIcon(new ImageIcon(ConfirmWindow.class.getResource("/img/webcam.jpg")));
+			lblPicture.setIcon(new ImageIcon(ConfirmWindow.class.getResource("/imgs/webcam.jpg")));
 			lblPicture.setBounds(0, 0, 434, 228);
 		}
 		return lblPicture;
