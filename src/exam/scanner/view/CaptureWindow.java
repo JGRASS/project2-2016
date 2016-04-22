@@ -1,57 +1,137 @@
 package exam.scanner.view;
 
-import javax.swing.JFrame;
-import javax.swing.JButton;
 import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+
+import exam.scanner.controller.gui.capture.CaptureController;
 
 public class CaptureWindow extends JFrame {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private JPanel southPanel;
+
+	private JPanel contentPane;
+	private JPanel jpnlCenter;
+	private JPanel jpnlSouth;
+	private JButton btnStart;
 	private JButton btnCapture;
-	private JButton btnCancle;
-	private JPanel centralPanel;
+	private JButton btnCancel;
+
+	private List<Webcam> webcams;
+	private List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					CaptureWindow frame = new CaptureWindow();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
 	public CaptureWindow() {
-		setTitle("New exam");
-		getContentPane().add(getSouthPanel(), BorderLayout.SOUTH);
-		getContentPane().add(getCentralPanel(), BorderLayout.CENTER);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		contentPane.add(getJpnlCenter(), BorderLayout.CENTER);
+		contentPane.add(getJpnlSouth(), BorderLayout.SOUTH);
+
 	}
-	private JPanel getSouthPanel() {
-		if (southPanel == null) {
-			southPanel = new JPanel();
-			southPanel.add(getBtnCapture());
-			southPanel.add(getBtnCancle());
+
+	public CaptureWindow(List<Webcam> webcams, List<WebcamPanel> panels) {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		contentPane.add(getJpnlCenter(), BorderLayout.CENTER);
+		contentPane.add(getJpnlSouth(), BorderLayout.SOUTH);
+
+		this.webcams = webcams;
+		this.panels = panels;
+	}
+
+	public JPanel getJpnlCenter() {
+		if (jpnlCenter == null) {
+			jpnlCenter = new JPanel();
 		}
-		return southPanel;
+		return jpnlCenter;
 	}
-	private JButton getBtnCapture() {
+
+	public JPanel getJpnlSouth() {
+		if (jpnlSouth == null) {
+			jpnlSouth = new JPanel();
+			jpnlSouth.add(getBtnStart());
+			jpnlSouth.add(getBtnCapture());
+			jpnlSouth.add(getBtnCancel());
+		}
+		return jpnlSouth;
+	}
+
+	public JButton getBtnStart() {
+		if (btnStart == null) {
+			btnStart = new JButton("Start");
+			btnStart.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					CaptureController captureController = CaptureController.getInstance();
+					captureController.startCapture();
+				}
+			});
+		}
+		return btnStart;
+	}
+
+	public JButton getBtnCapture() {
 		if (btnCapture == null) {
 			btnCapture = new JButton("Capture");
 			btnCapture.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent e) {
+					CaptureController captureController = CaptureController.getInstance();
+					captureController.snapCapture();
 				}
 			});
 		}
 		return btnCapture;
 	}
-	private JButton getBtnCancle() {
-		if (btnCancle == null) {
-			btnCancle = new JButton("Cancle");
+
+	public JButton getBtnCancel() {
+		if (btnCancel == null) {
+			btnCancel = new JButton("Cancel");
+			btnCancel.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					CaptureController captureController = CaptureController.getInstance();
+					captureController.stopCapture();
+				}
+			});
 		}
-		return btnCancle;
-	}
-	private JPanel getCentralPanel() {
-		if (centralPanel == null) {
-			centralPanel = new JPanel();
-		}
-		return centralPanel;
+		return btnCancel;
 	}
 }
-

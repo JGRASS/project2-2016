@@ -1,20 +1,23 @@
 package exam.scanner.view;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.ImageIcon;
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
+
+import exam.scanner.controller.gui.main.MainAppController;
 
 
 public class MainAppWindow {
 
-	private JFrame frmTitle;
+	private JFrame frmMain;
 	private JMenuBar menuBar;
 	private JMenu mnMenu;
 	private JMenu mnAbout;
@@ -26,21 +29,6 @@ public class MainAppWindow {
 	private JScrollPane scrollPane;
 	private JLabel imgLbl;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainAppWindow window = new MainAppWindow();
-					window.frmTitle.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -53,16 +41,19 @@ public class MainAppWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmTitle = new JFrame();
-		frmTitle.setTitle("Title");
-		frmTitle.setBounds(100, 100, 503, 300);
-		frmTitle.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmTitle.setJMenuBar(getMenuBar());
-		frmTitle.getContentPane().setLayout(new BorderLayout(0, 0));
-		frmTitle.getContentPane().add(getScrollPane_1(), BorderLayout.CENTER);
+		frmMain = new JFrame();
+		frmMain.setTitle("Title");
+		frmMain.setBounds(100, 100, 503, 300);
+		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMain.setJMenuBar(getMenuBar());
+		frmMain.getContentPane().setLayout(new BorderLayout(0, 0));
+		frmMain.getContentPane().add(getScrollPane_1(), BorderLayout.CENTER);
+		frmMain.setLocationRelativeTo(null);
+		
+		frmMain.setVisible(true);
 	}
 
-	private JMenuBar getMenuBar() {
+	public JMenuBar getMenuBar() {
 		if (menuBar == null) {
 			menuBar = new JMenuBar();
 			menuBar.add(getMnMenu());
@@ -70,7 +61,7 @@ public class MainAppWindow {
 		}
 		return menuBar;
 	}
-	private JMenu getMnMenu() {
+	public JMenu getMnMenu() {
 		if (mnMenu == null) {
 			mnMenu = new JMenu("Menu");
 			mnMenu.add(getMntmDisplay());
@@ -79,7 +70,7 @@ public class MainAppWindow {
 		}
 		return mnMenu;
 	}
-	private JMenu getMnAbout() {
+	public JMenu getMnAbout() {
 		if (mnAbout == null) {
 			mnAbout = new JMenu("About");
 			mnAbout.add(getMntmInfo());
@@ -87,49 +78,56 @@ public class MainAppWindow {
 		}
 		return mnAbout;
 	}
-	private JMenuItem getMntmDisplay() {
+	public JMenuItem getMntmDisplay() {
 		if (mntmDisplay == null) {
 			mntmDisplay = new JMenuItem("Display");
 			mntmDisplay.setIcon(new ImageIcon(MainAppWindow.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black-rtl.png")));
 		}
 		return mntmDisplay;
 	}
-	private JMenuItem getMntmCaptureNew() {
+	public JMenuItem getMntmCaptureNew() {
 		if (mntmCaptureNew == null) {
 			mntmCaptureNew = new JMenuItem("Capture new");
+			mntmCaptureNew.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					MainAppController main = MainAppController.getInstance();
+					main.captureNew();
+				}
+			});
 			mntmCaptureNew.setIcon(new ImageIcon(MainAppWindow.class.getResource("/javax/swing/plaf/metal/icons/ocean/iconify-pressed.gif")));
 		}
 		return mntmCaptureNew;
 	}
-	private JMenuItem getMntmInfo() {
+	public JMenuItem getMntmInfo() {
 		if (mntmInfo == null) {
 			mntmInfo = new JMenuItem("Info");
 			mntmInfo.setIcon(new ImageIcon(MainAppWindow.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Italic-Black.png")));
 		}
 		return mntmInfo;
 	}
-	private JMenuItem getMntmAuthors() {
+	public JMenuItem getMntmAuthors() {
 		if (mntmAuthors == null) {
 			mntmAuthors = new JMenuItem("Authors");
 			mntmAuthors.setIcon(new ImageIcon(MainAppWindow.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		}
 		return mntmAuthors;
 	}
-	private JMenuItem getMntmDelete() {
+	public JMenuItem getMntmDelete() {
 		if (mntmDelete == null) {
 			mntmDelete = new JMenuItem("Delete");
 			mntmDelete.setIcon(new ImageIcon(MainAppWindow.class.getResource("/com/sun/javafx/scene/web/skin/DecreaseIndent_16x16_JFX.png")));
 		}
 		return mntmDelete;
 	}
-	private JScrollPane getScrollPane_1() {
+	public JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
 			scrollPane.setViewportView(getImgLbl());
 		}
 		return scrollPane;
 	}
-	private JLabel getImgLbl() {
+	public JLabel getImgLbl() {
 		if (imgLbl == null) {
 			imgLbl = new JLabel("");
 			imgLbl.setIcon(new ImageIcon(MainAppWindow.class.getResource("/imgs/fon-logo.jpg")));
