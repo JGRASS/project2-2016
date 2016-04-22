@@ -3,5 +3,14 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="resources/libs/other/javaocr/javaocr-core-1.0.jar"/>
+	<classpathentry kind="lib" path="resources/libs/other/javaocr/javaocr-plugin-awt-1.0.jar"/>
+	<classpathentry kind="lib" path="resources/libs/other/javaocr/javaocr-plugin-cluster-1.0.jar"/>
+	<classpathentry kind="lib" path="resources/libs/other/javaocr/javaocr-plugin-fir-1.0.jar"/>
+	<classpathentry kind="lib" path="resources/libs/other/javaocr/javaocr-plugin-moment-1.0.jar"/>
+	<classpathentry kind="lib" path="resources/libs/other/javaocr/javaocr-plugin-morphology-1.0.jar"/>
+	<classpathentry kind="lib" path="resources/libs/other/webcam/external/bridj-0.6.2.jar"/>
+	<classpathentry kind="lib" path="resources/libs/other/webcam/external/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="resources/libs/other/webcam/webcam-capture-0.3.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
