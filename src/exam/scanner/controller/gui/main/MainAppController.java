@@ -2,6 +2,8 @@ package exam.scanner.controller.gui.main;
 
 import java.awt.EventQueue;
 
+import javax.swing.UIManager;
+
 import exam.scanner.controller.gui.capture.CaptureController;
 import exam.scanner.view.MainAppWindow;
 
@@ -26,6 +28,7 @@ public class MainAppController {
 			@Override
 			public void run() {
 				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					new MainAppWindow();
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -1,6 +1,7 @@
 package exam.scanner.controller.gui.capture;
 
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -45,31 +46,40 @@ public class CaptureController {
 	}
 
 	public void loadCaptureWindow() {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
 
-		for (Webcam webcam : webcams) {
-			webcam.setViewSize(size);
-			WebcamPanel panel = new WebcamPanel(webcam, size, false);
-			panel.setFPSDisplayed(true);
+					for (Webcam webcam : webcams) {
+						webcam.setViewSize(size);
+						WebcamPanel panel = new WebcamPanel(webcam, size, false);
+						panel.setFPSDisplayed(true);
 
-			// panel.setFillArea(true);
-			// panel.setDisplayDebugInfo(true);
-			// panel.setImageSizeDisplayed(true);
-			// panel.setMirrored(true);
+						// panel.setFillArea(true);
+						// panel.setDisplayDebugInfo(true);
+						// panel.setImageSizeDisplayed(true);
+						// panel.setMirrored(true);
 
-			panels.add(panel);
+						panels.add(panel);
 
-		}
+					}
 
-		captureWindow.getBtnCapture().setEnabled(false);
-		captureWindow.getBtnCancel().setEnabled(false);
+					captureWindow.getBtnCapture().setEnabled(false);
+					captureWindow.getBtnCancel().setEnabled(false);
 
-		captureWindow.getJpnlCenter().setLayout(new FlowLayout());
+					captureWindow.getJpnlCenter().setLayout(new FlowLayout());
 
-		for (WebcamPanel panel : panels) {
-			captureWindow.getJpnlCenter().add(panel);
-		}
-		captureWindow.pack();
-		captureWindow.setVisible(true);
+					for (WebcamPanel panel : panels) {
+						captureWindow.getJpnlCenter().add(panel);
+					}
+					captureWindow.pack();
+					captureWindow.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 	public void startCapture() {
