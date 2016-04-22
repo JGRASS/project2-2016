@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 
 import exam.scanner.controller.gui.main.MainAppController;
+import java.awt.Toolkit;
 
 
 public class MainAppWindow {
@@ -42,7 +43,8 @@ public class MainAppWindow {
 	 */
 	private void initialize() {
 		frmMain = new JFrame();
-		frmMain.setTitle("Title");
+		frmMain.setIconImage(Toolkit.getDefaultToolkit().getImage(MainAppWindow.class.getResource("/imgs/fon-logo-png.png")));
+		frmMain.setTitle("Entrance examination");
 		frmMain.setBounds(100, 100, 503, 300);
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMain.setJMenuBar(getMenuBar());
