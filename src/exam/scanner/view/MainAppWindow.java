@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 
 public class MainAppWindow {
@@ -24,7 +25,7 @@ public class MainAppWindow {
 	private JMenuItem mntmAuthors;
 	private JMenuItem mntmDelete;
 	private JScrollPane scrollPane;
-	private JLabel imgLbl;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -59,10 +60,10 @@ public class MainAppWindow {
 		frmTitle.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTitle.setJMenuBar(getMenuBar());
 		frmTitle.getContentPane().setLayout(new BorderLayout(0, 0));
-		frmTitle.getContentPane().add(getScrollPane_1(), BorderLayout.CENTER);
+		frmTitle.getContentPane().add(getScrollPane(), BorderLayout.CENTER);
 	}
 
-	private JMenuBar getMenuBar() {
+	public JMenuBar getMenuBar() {
 		if (menuBar == null) {
 			menuBar = new JMenuBar();
 			menuBar.add(getMnMenu());
@@ -70,7 +71,7 @@ public class MainAppWindow {
 		}
 		return menuBar;
 	}
-	private JMenu getMnMenu() {
+	public JMenu getMnMenu() {
 		if (mnMenu == null) {
 			mnMenu = new JMenu("Menu");
 			mnMenu.add(getMntmDisplay());
@@ -79,7 +80,7 @@ public class MainAppWindow {
 		}
 		return mnMenu;
 	}
-	private JMenu getMnAbout() {
+	public JMenu getMnAbout() {
 		if (mnAbout == null) {
 			mnAbout = new JMenu("About");
 			mnAbout.add(getMntmInfo());
@@ -87,53 +88,52 @@ public class MainAppWindow {
 		}
 		return mnAbout;
 	}
-	private JMenuItem getMntmDisplay() {
+	public JMenuItem getMntmDisplay() {
 		if (mntmDisplay == null) {
 			mntmDisplay = new JMenuItem("Display");
 			mntmDisplay.setIcon(new ImageIcon(MainAppWindow.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black-rtl.png")));
 		}
 		return mntmDisplay;
 	}
-	private JMenuItem getMntmCaptureNew() {
+	public JMenuItem getMntmCaptureNew() {
 		if (mntmCaptureNew == null) {
 			mntmCaptureNew = new JMenuItem("Capture new");
 			mntmCaptureNew.setIcon(new ImageIcon(MainAppWindow.class.getResource("/javax/swing/plaf/metal/icons/ocean/iconify-pressed.gif")));
 		}
 		return mntmCaptureNew;
 	}
-	private JMenuItem getMntmInfo() {
+	public JMenuItem getMntmInfo() {
 		if (mntmInfo == null) {
 			mntmInfo = new JMenuItem("Info");
 			mntmInfo.setIcon(new ImageIcon(MainAppWindow.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Italic-Black.png")));
 		}
 		return mntmInfo;
 	}
-	private JMenuItem getMntmAuthors() {
+	public JMenuItem getMntmAuthors() {
 		if (mntmAuthors == null) {
 			mntmAuthors = new JMenuItem("Authors");
 			mntmAuthors.setIcon(new ImageIcon(MainAppWindow.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		}
 		return mntmAuthors;
 	}
-	private JMenuItem getMntmDelete() {
+	public JMenuItem getMntmDelete() {
 		if (mntmDelete == null) {
 			mntmDelete = new JMenuItem("Delete");
 			mntmDelete.setIcon(new ImageIcon(MainAppWindow.class.getResource("/com/sun/javafx/scene/web/skin/DecreaseIndent_16x16_JFX.png")));
 		}
 		return mntmDelete;
 	}
-	private JScrollPane getScrollPane_1() {
+	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setViewportView(getImgLbl());
+			scrollPane.setViewportView(getTable());
 		}
 		return scrollPane;
 	}
-	private JLabel getImgLbl() {
-		if (imgLbl == null) {
-			imgLbl = new JLabel("");
-			imgLbl.setIcon(new ImageIcon(MainAppWindow.class.getResource("/imgs/fon-logo.jpg")));
+	public JTable getTable() {
+		if (table == null) {
+			table = new JTable();
 		}
-		return imgLbl;
+		return table;
 	}
 }

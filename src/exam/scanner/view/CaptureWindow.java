@@ -23,7 +23,7 @@ public class CaptureWindow extends JFrame {
 		getContentPane().add(getSouthPanel(), BorderLayout.SOUTH);
 		getContentPane().add(getCentralPanel(), BorderLayout.CENTER);
 	}
-	private JPanel getSouthPanel() {
+	public JPanel getSouthPanel() {
 		if (southPanel == null) {
 			southPanel = new JPanel();
 			southPanel.add(getBtnCapture());
@@ -31,7 +31,7 @@ public class CaptureWindow extends JFrame {
 		}
 		return southPanel;
 	}
-	private JButton getBtnCapture() {
+	public JButton getBtnCapture() {
 		if (btnCapture == null) {
 			btnCapture = new JButton("Capture");
 			btnCapture.addActionListener(new ActionListener() {
@@ -41,13 +41,13 @@ public class CaptureWindow extends JFrame {
 		}
 		return btnCapture;
 	}
-	private JButton getBtnCancle() {
+	public JButton getBtnCancle() {
 		if (btnCancle == null) {
 			btnCancle = new JButton("Cancle");
 		}
 		return btnCancle;
 	}
-	private JPanel getCentralPanel() {
+	public JPanel getCentralPanel() {
 		if (centralPanel == null) {
 			centralPanel = new JPanel();
 		}
