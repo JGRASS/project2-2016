@@ -18,6 +18,7 @@ public class ConfirmWindow extends JFrame {
 	private JButton btnAgain;
 	private JPanel panel_1;
 	private JLabel lblPicture;
+
 	public ConfirmWindow() {
 		setTitle("Are you sure?");
 		getContentPane().add(getPanel(), BorderLayout.SOUTH);
@@ -32,18 +33,21 @@ public class ConfirmWindow extends JFrame {
 		}
 		return panel;
 	}
+
 	public JButton getBtnOkay() {
 		if (btnOkay == null) {
 			btnOkay = new JButton("Okay");
 		}
 		return btnOkay;
 	}
+
 	public JButton getBtnAgain() {
 		if (btnAgain == null) {
 			btnAgain = new JButton("Again");
 		}
 		return btnAgain;
 	}
+
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -52,6 +56,7 @@ public class ConfirmWindow extends JFrame {
 		}
 		return panel_1;
 	}
+
 	public JLabel getLblPicture() {
 		if (lblPicture == null) {
 			lblPicture = new JLabel("");
