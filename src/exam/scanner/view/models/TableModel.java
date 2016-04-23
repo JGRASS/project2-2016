@@ -5,19 +5,19 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import exam.scanner.model.domain.Student;
+import exam.scanner.model.test.Candidate;
 
 @SuppressWarnings("serial")
 public class TableModel extends AbstractTableModel {
 
 	private final String[] columns = new String[] { "Student password", "Exam password", "resuts" };
-	private List<Student> students;
+	private List<Candidate> candidate;
 
-	public TableModel(List<Student> students) {
-		if (students == null) {
-			this.students = new LinkedList<>();
+	public TableModel(List<Candidate> candidate) {
+		if (candidate == null) {
+			this.candidate = new LinkedList<>();
 		} else {
-			this.students = students;
+			this.candidate = candidate;
 		}
 	}
 
@@ -28,16 +28,16 @@ public class TableModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return students.size();
+		return candidate.size();
 	}
 
 	@Override
 	public Object getValueAt(int column, int row) {
-		Student s = students.get(row);
+		Candidate s = candidate.get(row);
 		switch (column) {
 
 		case 0:
-			return s.getStudentPassword();
+			return s.getCandidatePassword();
 		case 1:
 			return s.getExamPassword();
 		case 2:
@@ -51,8 +51,8 @@ public class TableModel extends AbstractTableModel {
 		return columns[column];
 	}
 
-	public void upload(List<Student> students) {
-		this.students = students;
+	public void upload(List<Candidate> candidate) {
+		this.candidate = candidate;
 		fireTableDataChanged();
 	}
 
