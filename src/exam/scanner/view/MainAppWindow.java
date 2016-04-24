@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import exam.scanner.controller.gui.app.MainAppController;
+import exam.scanner.model.persistance.Serialization;
 import exam.scanner.view.models.TableModel;
 
 public class MainAppWindow {
@@ -93,6 +94,12 @@ public class MainAppWindow {
 	public JMenuItem getMntmDisplay() {
 		if (mntmDisplay == null) {
 			mntmDisplay = new JMenuItem("Display");
+			mntmDisplay.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					TableModel model = (TableModel) table.getModel();
+					model.upload(Serialization.getResults());
+				}
+			});
 			mntmDisplay.setIcon(new ImageIcon(MainAppWindow.class
 					.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Indent-Black-rtl.png")));
 		}
