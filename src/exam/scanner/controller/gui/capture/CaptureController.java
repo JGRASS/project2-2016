@@ -25,11 +25,11 @@ public class CaptureController {
 	// private Dimension size = WebcamResolution.VGA.getSize();
 	// private List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
 
-	private List<Webcam> webcams = new WebcamController().getWebcams();
-	private Dimension size = new WebcamController().getSize();
-	private List<WebcamPanel> panels = new WebcamController().getPanels();
+	private static List<Webcam> webcams = new WebcamController().getWebcams();
+	private static Dimension size = new WebcamController().getSize();
+	private static List<WebcamPanel> panels = new WebcamController().getPanels();
 
-	CaptureWindow captureWindow = new CaptureWindow();
+	static CaptureWindow captureWindow = new CaptureWindow();
 
 	SnapMeAction snapMeAction = new SnapMeAction(webcams);
 	StartAction startAction = new StartAction(captureWindow, panels, executor);
@@ -43,7 +43,7 @@ public class CaptureController {
 		return instance;
 	}
 
-	public void loadCaptureWindow() {
+	public static void loadCaptureWindow() {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {

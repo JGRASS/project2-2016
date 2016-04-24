@@ -1,4 +1,4 @@
-package exam.scanner.view.models;
+package exam.scanner.view.models.table;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -13,9 +13,9 @@ public class TableModel extends AbstractTableModel {
 	private final String[] columns = new String[] { "Student password", "Exam password", "Results" };
 	private List<Candidate> candidate;
 
-	public TableModel(List<Candidate> candidate) {
+	public TableModel(LinkedList<Candidate> candidate) {
 		if (candidate == null) {
-			this.candidate = new LinkedList<>();
+			this.candidate = new LinkedList<Candidate>();
 		} else {
 			this.candidate = candidate;
 		}
@@ -32,7 +32,8 @@ public class TableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public Object getValueAt(int column, int row) {
+	public Object getValueAt(int row, int column) {
+		System.out.println("Call: getValueAt(" + row + ", " + column + ")");
 		Candidate s = candidate.get(row);
 		switch (column) {
 
@@ -41,7 +42,7 @@ public class TableModel extends AbstractTableModel {
 		case 1:
 			return s.getExamPassword();
 		case 2:
-			return s.getResults();
+			return Integer.toString(s.getResults());
 		default:
 			return "unknown";
 		}
@@ -49,11 +50,6 @@ public class TableModel extends AbstractTableModel {
 
 	public String getColumnName(int column) {
 		return columns[column];
-	}
-
-	public void upload(List<Candidate> candidate) {
-		this.candidate = candidate;
-		fireTableDataChanged();
 	}
 
 }

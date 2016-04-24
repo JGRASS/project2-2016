@@ -11,14 +11,11 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import exam.scanner.controller.gui.app.MainAppController;
-import exam.scanner.model.persistance.Serialization;
-import exam.scanner.view.models.TableModel;
 
 public class MainAppWindow {
 
@@ -58,7 +55,7 @@ public class MainAppWindow {
 		frmMain.setLocationRelativeTo(null);
 		frmMain.getContentPane().setLayout(new BorderLayout(0, 0));
 		frmMain.getContentPane().add(getPanel(), BorderLayout.SOUTH);
-		frmMain.getContentPane().add(getScrollPane_1(), BorderLayout.CENTER);
+		frmMain.getContentPane().add(getScrollPane(), BorderLayout.CENTER);
 
 		frmMain.setVisible(true);
 	}
@@ -96,8 +93,7 @@ public class MainAppWindow {
 			mntmDisplay = new JMenuItem("Display");
 			mntmDisplay.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					TableModel model = (TableModel) table.getModel();
-					model.upload(Serialization.getResults());
+					MainAppController.displayTable();
 				}
 			});
 			mntmDisplay.setIcon(new ImageIcon(MainAppWindow.class
@@ -112,8 +108,7 @@ public class MainAppWindow {
 			mntmCaptureNew.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					MainAppController main = MainAppController.getInstance();
-					main.captureNew();
+					MainAppController.captureNew();
 				}
 			});
 			mntmCaptureNew.setIcon(new ImageIcon(
@@ -127,12 +122,7 @@ public class MainAppWindow {
 			mntmInfo = new JMenuItem("Info");
 			mntmInfo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					JOptionPane.showMessageDialog(null,
-							"This application is developed in order to review entrance exams in more appropriate way."
-									+ '\n' + " To review new test go to Menu-Capture new." + '\n'
-									+ " To dispal all reviewed tests go to Menu-Display. " + '\n'
-									+ " To delete a reviewed test go to Menu-Delete.",
-							"Application info", JOptionPane.PLAIN_MESSAGE);
+					MainAppController.showInfo();
 				}
 			});
 			mntmInfo.setIcon(new ImageIcon(MainAppWindow.class
@@ -146,10 +136,7 @@ public class MainAppWindow {
 			mntmAuthors = new JMenuItem("Authors");
 			mntmAuthors.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					JOptionPane.showMessageDialog(null,
-							"The application is developed by Lazar Davidovic , Aleksa Dencic and Luka Novakovic," + '\n'
-									+ " young students from Faculty of Organizational Sciences at University of Belgrade. ",
-							"About authors", JOptionPane.PLAIN_MESSAGE);
+					MainAppController.showAuthors();
 				}
 			});
 			mntmAuthors.setIcon(new ImageIcon(
@@ -176,10 +163,10 @@ public class MainAppWindow {
 		return panel;
 	}
 
-	public JScrollPane getScrollPane_1() {
+	public JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setViewportView(getTable_1());
+			scrollPane.setViewportView(getTable());
 		}
 		return scrollPane;
 	}
@@ -198,11 +185,10 @@ public class MainAppWindow {
 		return btnSaveChanges;
 	}
 
-	public JTable getTable_1() {
+	public JTable getTable() {
 		if (table == null) {
 			table = new JTable();
-			TableModel model = new TableModel(null);
-			table.setModel(model);
+
 		}
 		return table;
 	}
