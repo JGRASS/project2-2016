@@ -10,7 +10,7 @@ import exam.scanner.model.test.Candidate;
 @SuppressWarnings("serial")
 public class TableModel extends AbstractTableModel {
 
-	private final String[] columns = new String[] { "Student password", "Exam password", "resuts" };
+	private final String[] columns = new String[] { "Student password", "Exam password", "Results" };
 	private List<Candidate> candidate;
 
 	public TableModel(List<Candidate> candidate) {

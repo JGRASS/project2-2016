@@ -9,7 +9,7 @@ import exam.scanner.view.MainAppWindow;
 
 public class Main {
 
-	/**
+	/** 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
