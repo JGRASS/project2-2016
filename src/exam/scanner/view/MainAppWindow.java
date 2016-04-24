@@ -6,20 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import exam.scanner.controller.gui.app.MainAppController;
 import exam.scanner.view.models.TableModel;
-
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.BoxLayout;
 
 public class MainAppWindow {
 
@@ -123,12 +121,11 @@ public class MainAppWindow {
 			mntmInfo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					JOptionPane.showMessageDialog(null,
-						    "This application is developed in order to review entrance exams in more appropriate way." +'\n'+
-						    " To review new test go to Menu-Capture new." +'\n'+
-						    " To dispal all reviewed tests go to Menu-Display. " +'\n'+
-						    " To delete a reviewed test go to Menu-Delete.",
-						    "Application info",
-						    JOptionPane.PLAIN_MESSAGE);
+							"This application is developed in order to review entrance exams in more appropriate way."
+									+ '\n' + " To review new test go to Menu-Capture new." + '\n'
+									+ " To dispal all reviewed tests go to Menu-Display. " + '\n'
+									+ " To delete a reviewed test go to Menu-Delete.",
+							"Application info", JOptionPane.PLAIN_MESSAGE);
 				}
 			});
 			mntmInfo.setIcon(new ImageIcon(MainAppWindow.class
@@ -143,10 +140,9 @@ public class MainAppWindow {
 			mntmAuthors.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					JOptionPane.showMessageDialog(null,
-						    "The application is developed by Lazar Davidovic , Aleksa Dencic and Luka Novakovic,"+'\n'+
-						    " young students from Faculty of Organizational Sciences at University of Belgrade. ",
-						    "About authors",
-						    JOptionPane.PLAIN_MESSAGE);
+							"The application is developed by Lazar Davidovic , Aleksa Dencic and Luka Novakovic," + '\n'
+									+ " young students from Faculty of Organizational Sciences at University of Belgrade. ",
+							"About authors", JOptionPane.PLAIN_MESSAGE);
 				}
 			});
 			mntmAuthors.setIcon(new ImageIcon(
@@ -163,6 +159,7 @@ public class MainAppWindow {
 		}
 		return mntmDelete;
 	}
+
 	public JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -171,6 +168,7 @@ public class MainAppWindow {
 		}
 		return panel;
 	}
+
 	public JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
@@ -178,18 +176,21 @@ public class MainAppWindow {
 		}
 		return scrollPane;
 	}
+
 	public JButton getBtnEditField() {
 		if (btnEditField == null) {
 			btnEditField = new JButton("Edit field");
 		}
 		return btnEditField;
 	}
+
 	public JButton getBtnSaveChanges() {
 		if (btnSaveChanges == null) {
 			btnSaveChanges = new JButton("Save changes");
 		}
 		return btnSaveChanges;
 	}
+
 	public JTable getTable_1() {
 		if (table == null) {
 			table = new JTable();

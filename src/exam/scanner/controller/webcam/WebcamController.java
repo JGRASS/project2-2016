@@ -13,10 +13,10 @@ public class WebcamController {
 
 	@SuppressWarnings("unused")
 	private List<Webcam> webcams = null;
-	
+
 	@SuppressWarnings("unused")
 	private Dimension size = null;
-	
+
 	@SuppressWarnings("unused")
 	private List<WebcamPanel> panels = null;
 
