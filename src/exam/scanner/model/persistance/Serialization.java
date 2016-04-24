@@ -59,8 +59,23 @@ public class Serialization {
 		}
 	}
 
-	public LinkedList<Candidate> getResults() {
-		return results;
+	public static LinkedList<Candidate> getResults() {
+		LinkedList<Candidate> listT = new LinkedList<>();
+		Candidate c1 = new Candidate();
+		Candidate c2 = new Candidate();
+		
+		c1.setCandidatePassword("123");
+		c1.setExamPassword("999");
+		c1.setResults(99);
+		
+		c2.setCandidatePassword("456");
+		c2.setExamPassword("111");
+		c2.setResults(30);
+		
+		listT.add(c1);
+		
+		
+		return listT;
 	}
 
 }

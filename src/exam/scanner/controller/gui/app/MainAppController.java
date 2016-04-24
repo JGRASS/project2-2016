@@ -19,5 +19,5 @@ public class MainAppController {
 		CaptureController captureController = CaptureController.getInstance();
 		captureController.loadCaptureWindow();
 	}
-
+	
 }
