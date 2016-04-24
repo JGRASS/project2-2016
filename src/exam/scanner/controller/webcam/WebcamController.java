@@ -11,8 +11,13 @@ import com.github.sarxos.webcam.WebcamResolution;
 public class WebcamController {
 	private static WebcamController instance = null;
 
+	@SuppressWarnings("unused")
 	private List<Webcam> webcams = null;
+	
+	@SuppressWarnings("unused")
 	private Dimension size = null;
+	
+	@SuppressWarnings("unused")
 	private List<WebcamPanel> panels = null;
 
 	public WebcamController() {

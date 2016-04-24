@@ -126,5 +126,6 @@ public class OCRRecognize {
 		System.out.println("done.");
 	}
 
+	@SuppressWarnings("unused")
 	private static final Logger LOG = Logger.getLogger(OCRScannerDemo.class.getName());
 }
