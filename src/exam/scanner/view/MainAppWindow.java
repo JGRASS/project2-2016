@@ -10,10 +10,16 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import exam.scanner.controller.gui.app.MainAppController;
+import exam.scanner.view.models.TableModel;
+
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.BoxLayout;
 
 public class MainAppWindow {
 
@@ -26,7 +32,10 @@ public class MainAppWindow {
 	private JMenuItem mntmInfo;
 	private JMenuItem mntmAuthors;
 	private JMenuItem mntmDelete;
+	private JPanel panel;
 	private JScrollPane scrollPane;
+	private JButton btnEditField;
+	private JButton btnSaveChanges;
 	private JTable table;
 
 	/**
@@ -47,9 +56,10 @@ public class MainAppWindow {
 		frmMain.setBounds(100, 100, 503, 300);
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMain.setJMenuBar(getMenuBar());
-		frmMain.getContentPane().setLayout(new BorderLayout(0, 0));
-		frmMain.getContentPane().add(getScrollPane(), BorderLayout.CENTER);
 		frmMain.setLocationRelativeTo(null);
+		frmMain.getContentPane().setLayout(new BorderLayout(0, 0));
+		frmMain.getContentPane().add(getPanel(), BorderLayout.SOUTH);
+		frmMain.getContentPane().add(getScrollPane_1(), BorderLayout.CENTER);
 
 		frmMain.setVisible(true);
 	}
@@ -110,6 +120,17 @@ public class MainAppWindow {
 	public JMenuItem getMntmInfo() {
 		if (mntmInfo == null) {
 			mntmInfo = new JMenuItem("Info");
+			mntmInfo.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JOptionPane.showMessageDialog(null,
+						    "This application is developed in order to review entrance exams in more appropriate way." +'\n'+
+						    " To review new test go to Menu-Capture new." +'\n'+
+						    " To dispal all reviewed tests go to Menu-Display. " +'\n'+
+						    " To delete a reviewed test go to Menu-Delete.",
+						    "Application info",
+						    JOptionPane.PLAIN_MESSAGE);
+				}
+			});
 			mntmInfo.setIcon(new ImageIcon(MainAppWindow.class
 					.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Italic-Black.png")));
 		}
@@ -119,6 +140,15 @@ public class MainAppWindow {
 	public JMenuItem getMntmAuthors() {
 		if (mntmAuthors == null) {
 			mntmAuthors = new JMenuItem("Authors");
+			mntmAuthors.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					JOptionPane.showMessageDialog(null,
+						    "The application is developed by Lazar Davidovic , Aleksa Dencic and Luka Novakovic,"+'\n'+
+						    " young students from Faculty of Organizational Sciences at University of Belgrade. ",
+						    "About authors",
+						    JOptionPane.PLAIN_MESSAGE);
+				}
+			});
 			mntmAuthors.setIcon(new ImageIcon(
 					MainAppWindow.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		}
@@ -133,18 +163,38 @@ public class MainAppWindow {
 		}
 		return mntmDelete;
 	}
-
-	public JScrollPane getScrollPane() {
+	public JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.add(getBtnEditField());
+			panel.add(getBtnSaveChanges());
+		}
+		return panel;
+	}
+	public JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setViewportView(getTable());
+			scrollPane.setViewportView(getTable_1());
 		}
 		return scrollPane;
 	}
-
-	public JTable getTable() {
+	public JButton getBtnEditField() {
+		if (btnEditField == null) {
+			btnEditField = new JButton("Edit field");
+		}
+		return btnEditField;
+	}
+	public JButton getBtnSaveChanges() {
+		if (btnSaveChanges == null) {
+			btnSaveChanges = new JButton("Save changes");
+		}
+		return btnSaveChanges;
+	}
+	public JTable getTable_1() {
 		if (table == null) {
 			table = new JTable();
+			TableModel model = new TableModel(null);
+			table.setModel(model);
 		}
 		return table;
 	}
