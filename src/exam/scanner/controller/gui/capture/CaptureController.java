@@ -39,9 +39,7 @@ public class CaptureController {
 	}
 
 	public static CaptureController getInstance() {
-		if (instance == null) {
-			instance = new CaptureController();
-		}
+		instance = new CaptureController();
 		return instance;
 	}
 
