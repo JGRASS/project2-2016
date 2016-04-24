@@ -32,17 +32,16 @@ public class TableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public Object getValueAt(int row, int column) {
-		System.out.println("Call: getValueAt(" + row + ", " + column + ")");
-		Candidate s = candidate.get(row);
-		switch (column) {
-
+	public Object getValueAt(int rowIndex, int columnIndex) {
+		System.out.println("Call: getValueAt(" + rowIndex + ", " + columnIndex + ")");
+		Candidate cand = candidate.get(rowIndex);
+		switch (columnIndex) {
 		case 0:
-			return s.getCandidatePassword();
+			return cand.getCandidatePassword();
 		case 1:
-			return s.getExamPassword();
+			return cand.getExamPassword();
 		case 2:
-			return Integer.toString(s.getResults());
+			return Integer.toString(cand.getResults());
 		default:
 			return "unknown";
 		}
@@ -52,4 +51,27 @@ public class TableModel extends AbstractTableModel {
 		return columns[column];
 	}
 
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		return columnIndex == 2;
+	}
+
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		Candidate cand = candidate.get(rowIndex);
+		switch (columnIndex) {
+		case 0:
+			cand.setCandidatePassword((String) aValue);
+			break;
+		case 1:
+			cand.setExamPassword((String) aValue);
+			break;
+		case 2:
+			cand.setResults(Integer.parseInt((String) aValue));
+			break;
+		default:
+			break;
+		}
+
+	}
 }
