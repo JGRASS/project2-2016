@@ -8,6 +8,7 @@ import exam.scanner.controller.gui.dialogs.ShowDialogsController;
 import exam.scanner.controller.gui.table.TableController;
 import exam.scanner.model.test.Candidate;
 import exam.scanner.view.MainAppWindow;
+import exam.scanner.view.models.table.TableModel;
 
 public class MainAppController {
 	private static MainAppController instance = null;
@@ -52,5 +53,20 @@ public class MainAppController {
 		mainAppWindow.getTable().setModel(TableController.loadTable());
 
 	}
-
+	
+	public static void deleteRow(){
+		int index = mainAppWindow.getTable().getSelectedRow();
+		if (index == -1) {
+			MainAppController.errorDeletingRow();
+		} else {
+			int option = JOptionPane.showConfirmDialog(null,
+					"Are You sure?", "Confirm",
+					JOptionPane.YES_NO_OPTION);
+			if (option == JOptionPane.YES_OPTION) {
+				TableModel model = (TableModel)mainAppWindow.getTable().getModel();
+				Candidate ci = model.getKnjigaByIndex(index);
+				MainAppController.deleteCandidate(ci);
+			}
+		}
+	}
 }

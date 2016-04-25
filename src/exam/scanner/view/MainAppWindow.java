@@ -153,19 +153,7 @@ public class MainAppWindow {
 			mntmDelete = new JMenuItem("Delete");
 			mntmDelete.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					int index = table.getSelectedRow();
-					if (index == -1) {
-						MainAppController.errorDeletingRow();
-					} else {
-						int option = JOptionPane.showConfirmDialog(null,
-								"Are You sure?", "Confirm",
-								JOptionPane.YES_NO_OPTION);
-						if (option == JOptionPane.YES_OPTION) {
-							TableModel model = (TableModel) table.getModel();
-							Candidate ci = model.getKnjigaByIndex(index);
-							MainAppController.deleteCandidate(ci);
-						}
-					}
+					MainAppController.deleteRow();
 				}
 			});
 			mntmDelete.setIcon(new ImageIcon(
