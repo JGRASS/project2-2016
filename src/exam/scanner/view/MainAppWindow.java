@@ -11,11 +11,14 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import exam.scanner.controller.gui.app.MainAppController;
+import exam.scanner.model.test.Candidate;
+import exam.scanner.view.models.table.TableModel;
 
 public class MainAppWindow {
 
@@ -148,6 +151,23 @@ public class MainAppWindow {
 	public JMenuItem getMntmDelete() {
 		if (mntmDelete == null) {
 			mntmDelete = new JMenuItem("Delete");
+			mntmDelete.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					int index = table.getSelectedRow();
+					if (index == -1) {
+						MainAppController.errorDeletingRow();
+					} else {
+						int option = JOptionPane.showConfirmDialog(null,
+								"Are You sure?", "Confirm",
+								JOptionPane.YES_NO_OPTION);
+						if (option == JOptionPane.YES_OPTION) {
+							TableModel model = (TableModel) table.getModel();
+							Candidate ci = model.getKnjigaByIndex(index);
+							MainAppController.deleteCandidate(ci);
+						}
+					}
+				}
+			});
 			mntmDelete.setIcon(new ImageIcon(
 					MainAppWindow.class.getResource("/com/sun/javafx/scene/web/skin/DecreaseIndent_16x16_JFX.png")));
 		}

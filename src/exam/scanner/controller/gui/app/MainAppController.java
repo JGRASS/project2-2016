@@ -1,8 +1,12 @@
 package exam.scanner.controller.gui.app;
 
+import javax.swing.JOptionPane;
+
+import exam.scanner.check.CandidatesCheck;
 import exam.scanner.controller.gui.capture.CaptureController;
 import exam.scanner.controller.gui.dialogs.ShowDialogsController;
 import exam.scanner.controller.gui.table.TableController;
+import exam.scanner.model.test.Candidate;
 import exam.scanner.view.MainAppWindow;
 
 public class MainAppController {
@@ -35,6 +39,18 @@ public class MainAppController {
 
 	public static void showAuthors() {
 		ShowDialogsController.showAuthors();
+	}
+
+	public static void errorDeletingRow() {
+		JOptionPane.showMessageDialog(null, "Please select a row to delete!", "Error!!!",
+				JOptionPane.ERROR_MESSAGE);
+		
+	}
+
+	public static void deleteCandidate(Candidate ci) {
+		CandidatesCheck.delete(ci);
+		mainAppWindow.getTable().setModel(TableController.loadTable());
+
 	}
 
 }

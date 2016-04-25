@@ -28,4 +28,9 @@ public class CandidatesCheck {
 
 	}
 
+	public static void delete(Candidate ci) {
+		candidates.remove(ci);
+		
+	}
+
 }

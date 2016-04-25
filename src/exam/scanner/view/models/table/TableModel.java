@@ -11,13 +11,13 @@ import exam.scanner.model.test.Candidate;
 public class TableModel extends AbstractTableModel {
 
 	private final String[] columns = new String[] { "Student password", "Exam password", "Results" };
-	private List<Candidate> candidate;
+	private List<Candidate> candidates;
 
 	public TableModel(LinkedList<Candidate> candidate) {
 		if (candidate == null) {
-			this.candidate = new LinkedList<Candidate>();
+			this.candidates = new LinkedList<Candidate>();
 		} else {
-			this.candidate = candidate;
+			this.candidates = candidate;
 		}
 	}
 
@@ -28,13 +28,13 @@ public class TableModel extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return candidate.size();
+		return candidates.size();
 	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		System.out.println("Call: getValueAt(" + rowIndex + ", " + columnIndex + ")");
-		Candidate cand = candidate.get(rowIndex);
+		Candidate cand = candidates.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
 			return cand.getCandidatePassword();
@@ -58,7 +58,7 @@ public class TableModel extends AbstractTableModel {
 
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		Candidate cand = candidate.get(rowIndex);
+		Candidate cand = candidates.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
 			cand.setCandidatePassword((String) aValue);
@@ -73,5 +73,9 @@ public class TableModel extends AbstractTableModel {
 			break;
 		}
 
+	}
+
+	public Candidate getKnjigaByIndex(int index) {
+		return candidates.get(index);
 	}
 }
