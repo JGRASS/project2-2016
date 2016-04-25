@@ -6,23 +6,18 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.LinkedList;
 
 import exam.scanner.model.Constants;
 import exam.scanner.model.test.Candidate;
 
 public class Serialization {
 
-	private static LinkedList<Candidate> results = new LinkedList<Candidate>();
-
-	public static void writeResults(Candidate candidate) {
-
-		results.add(candidate);
+	public static boolean writeResults(Candidate candidate) {
 
 		try {
 
 			DataOutputStream out = new DataOutputStream(
-					new BufferedOutputStream(new FileOutputStream(Constants.dataDir)));
+					new BufferedOutputStream(new FileOutputStream(Constants.resultsDir)));
 
 			out.writeUTF(candidate.getCandidatePassword());
 			out.writeChar('\t');
@@ -33,50 +28,43 @@ public class Serialization {
 
 			out.close();
 
+			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return false;
 
 	}
 
-	public void readResults() {
+	public Candidate readResults() {
+		Candidate candidate = new Candidate();
 
 		try {
-			DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream("resuts.out")));
+			DataInputStream in = new DataInputStream(
+					new BufferedInputStream(new FileInputStream(Constants.resultsDir)));
 			while (in.available() != 0) {
 				String candidatePassword = in.readUTF();
+				candidate.setCandidatePassword(candidatePassword);
 				in.readChar();
+
 				String examPassword = in.readUTF();
+				candidate.setExamPassword(examPassword);
 				in.readChar();
+
 				int candidateResult = in.readInt();
+				candidate.setResults(candidateResult);
 				in.readChar();
+
 				System.out.println("Candidate: " + candidatePassword + ".\tExam: " + examPassword + ".\tResult: "
 						+ candidateResult + "\n");
 			}
-
 			in.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static LinkedList<Candidate> getResults() {
-		LinkedList<Candidate> listT = new LinkedList<>();
-		Candidate c1 = new Candidate();
-		Candidate c2 = new Candidate();
-
-		c1.setCandidatePassword("123");
-		c1.setExamPassword("999");
-		c1.setResults(99);
-
-		c2.setCandidatePassword("456");
-		c2.setExamPassword("111");
-		c2.setResults(30);
-
-		listT.add(c1);
-
-		return listT;
+		return candidate;
 	}
 
 }

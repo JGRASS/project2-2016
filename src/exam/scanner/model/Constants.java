@@ -1,6 +1,5 @@
 package exam.scanner.model;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Constants {
@@ -12,12 +11,14 @@ public class Constants {
 	public static final String images = "Images\\";
 	public static final String settings = "Settings\\";
 	public static final String data = "Data\\";
+	public static final String resultsData = "results.out";
 
-	public static final File imageDir = new File(
-			Constants.absoluteStartPath + Constants.programName + Constants.images);
-	
-	public static final File dataDir = new File(
-			Constants.absoluteStartPath + Constants.programName + Constants.data);
+	public static final String imageDir = Constants.absoluteStartPath + Constants.programName + Constants.images;
+
+	public static final String dataDir = Constants.absoluteStartPath + Constants.programName + Constants.data;
+
+	public static final String resultsDir = Constants.absoluteStartPath + Constants.programName + Constants.data
+			+ Constants.resultsData;
 
 	public static final int answers = 20;
 

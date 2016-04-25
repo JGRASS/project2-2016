@@ -11,14 +11,11 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import exam.scanner.controller.gui.app.MainAppController;
-import exam.scanner.model.test.Candidate;
-import exam.scanner.view.models.table.TableModel;
 
 public class MainAppWindow {
 
@@ -97,6 +94,7 @@ public class MainAppWindow {
 			mntmDisplay.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					MainAppController.displayTable();
+					mntmDisplay.setEnabled(false);
 				}
 			});
 			mntmDisplay.setIcon(new ImageIcon(MainAppWindow.class
@@ -182,6 +180,10 @@ public class MainAppWindow {
 	public JButton getBtnEditField() {
 		if (btnEditField == null) {
 			btnEditField = new JButton("Edit field");
+			btnEditField.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
 		}
 		return btnEditField;
 	}
@@ -191,7 +193,7 @@ public class MainAppWindow {
 			btnSaveChanges = new JButton("Save changes");
 			btnSaveChanges.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					MainAppController.saveChanges();
+					MainAppController.showSaveChanges();
 				}
 			});
 		}

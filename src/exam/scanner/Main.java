@@ -4,8 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.UIManager;
 
+import exam.scanner.controller.gui.app.MainAppController;
 import exam.scanner.model.directories.MakeDefaultDirectories;
-import exam.scanner.view.MainAppWindow;
 
 public class Main {
 
@@ -19,7 +19,7 @@ public class Main {
 				try {
 					MakeDefaultDirectories.programDirectoriesCreate();
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					new MainAppWindow();
+					new MainAppController();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
