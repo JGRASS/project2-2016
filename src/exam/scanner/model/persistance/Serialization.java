@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.LinkedList;
 
+import exam.scanner.model.Constants;
 import exam.scanner.model.test.Candidate;
 
 public class Serialization {
@@ -20,7 +21,8 @@ public class Serialization {
 
 		try {
 
-			DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream("results.out")));
+			DataOutputStream out = new DataOutputStream(
+					new BufferedOutputStream(new FileOutputStream(Constants.dataDir)));
 
 			out.writeUTF(candidate.getCandidatePassword());
 			out.writeChar('\t');

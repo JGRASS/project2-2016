@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import exam.scanner.model.persistance.Serialization;
 import exam.scanner.model.test.Candidate;
 
 @SuppressWarnings("serial")
@@ -75,7 +76,13 @@ public class TableModel extends AbstractTableModel {
 
 	}
 
-	public Candidate getKnjigaByIndex(int index) {
+	public Candidate getCandidateByIndex(int index) {
 		return candidates.get(index);
+	}
+	
+	public void serializeChanges(){
+		for(int i = 0; i <getRowCount(); i++){
+			Serialization.writeResults(getCandidateByIndex(i));
+		}
 	}
 }

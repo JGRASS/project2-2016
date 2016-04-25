@@ -189,6 +189,11 @@ public class MainAppWindow {
 	public JButton getBtnSaveChanges() {
 		if (btnSaveChanges == null) {
 			btnSaveChanges = new JButton("Save changes");
+			btnSaveChanges.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					MainAppController.saveChanges();
+				}
+			});
 		}
 		return btnSaveChanges;
 	}

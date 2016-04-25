@@ -64,9 +64,20 @@ public class MainAppController {
 					JOptionPane.YES_NO_OPTION);
 			if (option == JOptionPane.YES_OPTION) {
 				TableModel model = (TableModel)mainAppWindow.getTable().getModel();
-				Candidate ci = model.getKnjigaByIndex(index);
+				Candidate ci = model.getCandidateByIndex(index);
 				MainAppController.deleteCandidate(ci);
 			}
+		}
+	}
+	
+public static void saveChanges(){
+		
+		int option = JOptionPane.showConfirmDialog(null,
+				"Do you want to save made changes?", "Confirm",
+				JOptionPane.YES_NO_OPTION);
+		if (option == JOptionPane.YES_OPTION) {
+			TableModel model = (TableModel)mainAppWindow.getTable().getModel();
+			model.serializeChanges();
 		}
 	}
 }

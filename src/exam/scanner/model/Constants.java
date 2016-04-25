@@ -15,6 +15,9 @@ public class Constants {
 
 	public static final File imageDir = new File(
 			Constants.absoluteStartPath + Constants.programName + Constants.images);
+	
+	public static final File dataDir = new File(
+			Constants.absoluteStartPath + Constants.programName + Constants.data);
 
 	public static final int answers = 20;
 
