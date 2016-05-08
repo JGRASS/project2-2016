@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import exam.scanner.model.Constants;
-
+/**
+ * Class for processing captured images(exams)
+ * @author LukaNovakovic
+ *
+ */
 public class ProcessingImages {
 	// File representing the folder that you select using a FileChooser
 	static final File imageDir = new File(Constants.absoluteStartPath + Constants.programName + Constants.images);
@@ -32,7 +36,12 @@ public class ProcessingImages {
 			return (false);
 		}
 	};
-
+	/**
+	 * method saves captured image
+	 * @param renderedImage
+	 * @param newImage
+	 * @author LukaNovakovic
+	 */
 	public static void saveImage(RenderedImage renderedImage, File newImage) {
 		try {
 			ImageIO.write(renderedImage, "JPG", newImage);
@@ -41,7 +50,8 @@ public class ProcessingImages {
 		}
 
 	}
-
+	
+	
 	public static ArrayList<String> getImages() {
 		ArrayList<String> images = new ArrayList<String>();
 

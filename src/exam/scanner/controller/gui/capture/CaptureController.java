@@ -16,6 +16,10 @@ import exam.scanner.controller.webcam.execute.StartAction;
 import exam.scanner.controller.webcam.execute.StopAction;
 import exam.scanner.view.CaptureWindow;
 
+/**
+ * Class manipulates with capture window
+ *
+ */
 public class CaptureController {
 	private static CaptureController instance = null;
 
@@ -43,6 +47,9 @@ public class CaptureController {
 		return instance;
 	}
 
+	/**
+	 * Method load capture window and sets webcam
+	 */
 	public static void loadCaptureWindow() {
 		EventQueue.invokeLater(new Runnable() {
 			@Override

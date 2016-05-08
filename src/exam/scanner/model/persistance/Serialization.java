@@ -14,7 +14,13 @@ import exam.scanner.model.test.Candidate;
 public class Serialization {
 
 	private static LinkedList<Candidate> results = new LinkedList<Candidate>();
-
+	
+	/**
+	 * Method serializes all data related to candidate
+	 * @param candidate
+	 * @throws Exception
+	 * @author LukaNovakovic
+	 */
 	public static void writeResults(Candidate candidate) {
 
 		results.add(candidate);
@@ -39,6 +45,11 @@ public class Serialization {
 
 	}
 
+	/**
+	 * Method reads all data related to candidate for serialized file
+	 * @throws Exception
+	 * @author LukaNovakovic
+	 */
 	public void readResults() {
 
 		try {
@@ -60,7 +71,8 @@ public class Serialization {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
 	public static LinkedList<Candidate> getResults() {
 		LinkedList<Candidate> listT = new LinkedList<>();
 		Candidate c1 = new Candidate();

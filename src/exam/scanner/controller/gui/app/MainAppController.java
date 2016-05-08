@@ -10,6 +10,12 @@ import exam.scanner.model.test.Candidate;
 import exam.scanner.view.MainAppWindow;
 import exam.scanner.view.models.table.TableModel;
 
+
+/**
+ * Class for manipulating with main application window
+ * @author LukaNovakovic
+ *
+ */
 public class MainAppController {
 	private static MainAppController instance = null;
 
@@ -25,10 +31,18 @@ public class MainAppController {
 
 	static MainAppWindow mainAppWindow = new MainAppWindow();
 
+	/**
+	 * Method loads and displays window for capturing new exam
+	 * @author LukaNovakovic
+	 */
 	public static void captureNew() {
 		CaptureController.loadCaptureWindow();
 	}
 
+	/**
+	 * Method sets table model and loads table with all data
+	 * @author LukaNovakovic
+	 */
 	public static void displayTable() {
 		mainAppWindow.getTable().setModel(TableController.loadTable());
 
@@ -48,12 +62,19 @@ public class MainAppController {
 		
 	}
 
+	/**
+	 * Method deletes candidate and reloads table
+	 * @param candidate
+	 */
 	public static void deleteCandidate(Candidate ci) {
 		CandidatesCheck.delete(ci);
 		mainAppWindow.getTable().setModel(TableController.loadTable());
 
 	}
-	
+	/**
+	 * Method deletes selected row and displays confirm dialog
+	 * @author LukaNovakovic
+	 */
 	public static void deleteRow(){
 		int index = mainAppWindow.getTable().getSelectedRow();
 		if (index == -1) {
@@ -69,7 +90,10 @@ public class MainAppController {
 			}
 		}
 	}
-	
+/**
+ * Method save changes made by user in table and reloads table
+ * @author LukaNovakovic
+ */
 public static void saveChanges(){
 		
 		int option = JOptionPane.showConfirmDialog(null,

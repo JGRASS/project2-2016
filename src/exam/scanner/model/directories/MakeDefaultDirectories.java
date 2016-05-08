@@ -3,6 +3,11 @@ package exam.scanner.model.directories;
 import java.io.File;
 
 import exam.scanner.model.Constants;
+/**
+ * Class for creating application directories
+ * @author LukaNovakovic
+ *
+ */
 
 public class MakeDefaultDirectories {
 	public static void programDirectoriesCreate() {

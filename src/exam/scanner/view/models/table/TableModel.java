@@ -8,6 +8,11 @@ import javax.swing.table.AbstractTableModel;
 import exam.scanner.model.persistance.Serialization;
 import exam.scanner.model.test.Candidate;
 
+/**
+ * Class manipulates with the table
+ * @author LukaNovakovic
+ *
+ */
 @SuppressWarnings("serial")
 public class TableModel extends AbstractTableModel {
 
@@ -79,7 +84,10 @@ public class TableModel extends AbstractTableModel {
 	public Candidate getCandidateByIndex(int index) {
 		return candidates.get(index);
 	}
-	
+	/**
+	 * Method saves changes  made by user
+	 * @author LukaNovakovic
+	 */
 	public void serializeChanges(){
 		for(int i = 0; i <getRowCount(); i++){
 			Serialization.writeResults(getCandidateByIndex(i));

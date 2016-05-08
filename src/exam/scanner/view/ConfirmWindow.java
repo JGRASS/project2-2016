@@ -19,6 +19,9 @@ public class ConfirmWindow extends JFrame {
 	private JPanel panel_1;
 	private JLabel lblPicture;
 
+	/**
+	 * Create the frame.
+	 */
 	public ConfirmWindow() {
 		setTitle("Are you sure?");
 		getContentPane().add(getPanel(), BorderLayout.SOUTH);
