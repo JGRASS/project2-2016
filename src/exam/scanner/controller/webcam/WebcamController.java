@@ -8,6 +8,10 @@ import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 
+/**
+ * Class manipulates with webcam actions
+ *
+ */
 public class WebcamController {
 	private static WebcamController instance = null;
 
